@@ -7,6 +7,10 @@ export function Disclaimer() {
       <p className="mt-8 text-[1.05rem] font-medium text-foreground/70">
         Hecho con <span className="text-primary" aria-label="amor">♥</span> en Colombia
       </p>
+      <p className="mt-3 text-[1.05rem] font-semibold text-foreground/80 flex items-center justify-center gap-2 flex-wrap">
+        Julián Trujillo
+        <span className="bg-primary/10 text-primary text-[0.85rem] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Builder</span>
+      </p>
       <p className="mt-1">
         <a
           href="https://julianprojects.com"
@@ -16,6 +20,9 @@ export function Disclaimer() {
         >
           julianprojects.com
         </a>
+      </p>
+      <p className="mt-4 text-[1.05rem] italic text-foreground/70">
+        Mi granito de arena. No estás solo, estamos contigo.
       </p>
     </div>
   );
