@@ -1,5 +1,5 @@
 import { useRoute, Link, useLocation } from 'wouter';
-import { guidesData } from '../content/data';
+import { guidesData, homeContent } from '../content/data';
 import { Icons } from '../components/icons';
 import { Disclaimer } from '../components/Disclaimer';
 import { useEffect } from 'react';
@@ -17,6 +17,11 @@ export function Guide() {
   }, [match, guide, setLocation]);
 
   if (!guide) return null;
+
+  const routes = homeContent.routes;
+  const currentIndex = routes.findIndex((r) => r.id === id);
+  const prevRoute = currentIndex > 0 ? routes[currentIndex - 1] : null;
+  const nextRoute = currentIndex >= 0 && currentIndex < routes.length - 1 ? routes[currentIndex + 1] : null;
 
   return (
     <div className="flex flex-col min-h-full bg-background">
@@ -198,6 +203,32 @@ export function Guide() {
                 return null;
             }
           })}
+        </div>
+
+        {/* Prev / Next navigation */}
+        <div className="mt-12 pt-8 border-t border-border/60 flex flex-col gap-4">
+          {nextRoute && (
+            <Link href={nextRoute.path} className="block group">
+              <div className="bg-primary text-primary-foreground active:scale-[0.98] transition-all duration-300 p-6 rounded-[1.25rem] shadow-sm flex items-center justify-between gap-5">
+                <div className="text-left">
+                  <p className="text-[0.9rem] font-semibold uppercase tracking-wide opacity-80">Siguiente</p>
+                  <p className="text-[1.15rem] font-bold leading-snug">{nextRoute.title}</p>
+                </div>
+                <Icons.ArrowRight size={26} strokeWidth={2.5} className="shrink-0 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </Link>
+          )}
+          {prevRoute && (
+            <Link href={prevRoute.path} className="block group">
+              <div className="bg-white border border-border active:scale-[0.98] transition-all duration-300 p-6 rounded-[1.25rem] shadow-sm flex items-center gap-5">
+                <Icons.ArrowLeft size={26} strokeWidth={2.5} className="shrink-0 text-primary group-hover:-translate-x-1 transition-transform duration-300" />
+                <div className="text-left">
+                  <p className="text-[0.9rem] font-semibold uppercase tracking-wide text-muted-foreground">Anterior</p>
+                  <p className="text-[1.15rem] font-bold leading-snug text-foreground">{prevRoute.title}</p>
+                </div>
+              </div>
+            </Link>
+          )}
         </div>
       </div>
 

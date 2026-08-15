@@ -130,12 +130,12 @@ export const guidesData: Record<string, GuideData> = {
           },
           {
             icon: "Sprout",
-            title: "Reconstruir mejor y prepararse para el próximo desastre",
+            title: "Mirar hacia adelante con más calma",
             list: [
               "Prepara un plan familiar: puntos de encuentro y contactos de emergencia.",
               "Arma una mochila de emergencia con agua, linterna, botiquín y copias de documentos.",
               "Identifica las zonas seguras de tu vivienda y de tu barrio.",
-              "Reconstruir mejor también significa sentirte más preparado y menos solo."
+              "Cada pequeño paso cuenta: sentirte más preparado te da tranquilidad, a tu ritmo y con lo que tengas a la mano."
             ]
           }
         ]
