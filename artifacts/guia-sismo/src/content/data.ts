@@ -370,21 +370,22 @@ export const guidesData: Record<string, GuideData> = {
     sections: [
       {
         type: "text",
-        text: "Para encontrar a un familiar o persona cercana de manera segura:"
+        text: "Mantén la calma y avanza paso a paso. Si estás buscando a un familiar o persona cercana, empieza por reunir la información que pueda ayudar a encontrarla:"
       },
       {
         type: "list",
         list: [
-          "Contacta primero a familiares y personas cercanas.",
-          "Utiliza únicamente canales oficiales de búsqueda y registro.",
-          "Evita compartir datos personales sensibles (como direcciones, teléfonos) públicamente en redes sociales.",
-          "Verifica la información antes de difundirla para no generar confusión.",
-          "No confíes ciegamente en publicaciones no verificadas o rumores."
+          "Anota su nombre completo, edad, fotografía reciente, lugar donde fue vista por última vez y la ropa que llevaba.",
+          "Llama y envía mensajes de texto o WhatsApp. Si no responde, puede que no tenga señal, batería o conexión.",
+          "Pregunta a familiares, vecinos, amistades y personas que hayan estado con ella.",
+          "Revisa hospitales, refugios y puntos de encuentro habilitados en la zona.",
+          "Publica la información de búsqueda en tus redes y grupos de la comunidad para ampliar las posibilidades de encontrarla.",
+          "Si recibes una noticia o una pista, compártela con la familia y con los equipos que estén ayudando en la búsqueda."
         ]
       },
       {
         type: "message",
-        emphasis: "Tu privacidad y la de tus seres queridos debe ser una prioridad durante la búsqueda."
+        emphasis: "Respira, pide ayuda y no dejes de buscar. Muchas personas están tratando de reencontrarse."
       }
     ]
   },
