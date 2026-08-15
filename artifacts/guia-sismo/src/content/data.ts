@@ -9,7 +9,8 @@ export const homeContent = {
     { id: 'vivienda', title: 'Perdí mi vivienda', icon: 'Home', path: '/guia/vivienda' },
     { id: 'necesito-algo', title: 'Necesito algo', icon: 'Package', path: '/guia/necesito-algo' },
     { id: 'buscando', title: 'Estoy buscando a alguien', icon: 'Users', path: '/guia/buscando' },
-    { id: 'acompanado', title: 'Necesito sentirme acompañado', icon: 'HeartHandshake', path: '/guia/acompanado' }
+    { id: 'acompanado', title: 'Necesito sentirme acompañado', icon: 'HeartHandshake', path: '/guia/acompanado' },
+    { id: 'pasos-siguientes', title: 'Pasos siguientes', icon: 'Route', path: '/guia/pasos-siguientes' }
   ]
 };
 
@@ -22,7 +23,9 @@ export type SectionData =
   | { type: 'grid-list'; list: string[] }
   | { type: 'quotes'; list: string[] }
   | { type: 'grounding'; title: string; text: string; list: { count: string; text: string }[] }
-  | { type: 'categories'; items: { icon: string; title: string; text: string }[] };
+  | { type: 'categories'; items: { icon: string; title: string; text: string }[] }
+  | { type: 'timeline'; phases: { period: string; icon: string; title: string; text?: string; list?: string[] }[] }
+  | { type: 'next-link'; path: string; label: string };
 
 export interface GuideData {
   title: string;
@@ -72,6 +75,78 @@ export const guidesData: Record<string, GuideData> = {
       {
         type: "message",
         emphasis: "No necesitas solucionar todo hoy. Concéntrate en el siguiente paso."
+      },
+      {
+        type: "next-link",
+        path: "/guia/pasos-siguientes",
+        label: "Pasos siguientes"
+      }
+    ]
+  },
+  "pasos-siguientes": {
+    title: "¿Qué hacer luego del sismo?",
+    sections: [
+      {
+        type: "text",
+        text: "Cuando pasan las primeras horas, es normal preguntarse qué sigue. No tienes que hacerlo todo a la vez: cada etapa tiene su momento."
+      },
+      {
+        type: "step",
+        title: "¿Puede ocurrir otro sismo?",
+        text: "Sí, pueden presentarse réplicas. Y también puede que no ocurran. Lo importante es mantener la calma y respirar hondo. Antes de pensar en todo lo demás, enfoca tu mente en tu alrededor y en tu seguridad."
+      },
+      {
+        type: "timeline",
+        phases: [
+          {
+            period: "Días 2–3",
+            icon: "Users",
+            title: "Encontrar y estabilizar",
+            list: [
+              "Confirma que tú y los tuyos estén a salvo y juntos en lo posible.",
+              "Mantén la calma: si sientes una réplica, respira hondo y aléjate de estructuras dañadas.",
+              "Asegura lo básico: agua, alimento, abrigo y un lugar seguro donde descansar.",
+              "Mantente informado solo por canales oficiales."
+            ]
+          },
+          {
+            period: "Días 4–7",
+            icon: "Home",
+            title: "Evaluar daños y conseguir ayuda",
+            list: [
+              "No entres a tu vivienda sin una evaluación si tiene daños visibles.",
+              "Documenta los daños con fotos cuando sea seguro hacerlo.",
+              "Acude a los puntos de asistencia y registros de ayuda habilitados por las autoridades.",
+              "Pregunta por apoyo para necesidades médicas, documentos y refugio temporal."
+            ]
+          },
+          {
+            period: "Semana 2+",
+            icon: "Hammer",
+            title: "Recuperar y reconstruir",
+            list: [
+              "Retoma poco a poco tus rutinas: dormir, comer y descansar también es recuperarse.",
+              "Gestiona trámites de vivienda, documentos y apoyos con calma, paso a paso.",
+              "Apóyate en tu comunidad: pedir y ofrecer ayuda hace la carga más ligera.",
+              "Si el miedo o la tristeza no ceden, buscar apoyo emocional es un acto de cuidado."
+            ]
+          },
+          {
+            period: "Meses siguientes",
+            icon: "Sprout",
+            title: "Reconstruir mejor y prepararse para el próximo desastre",
+            list: [
+              "Prepara un plan familiar: puntos de encuentro y contactos de emergencia.",
+              "Arma una mochila de emergencia con agua, linterna, botiquín y copias de documentos.",
+              "Identifica las zonas seguras de tu vivienda y de tu barrio.",
+              "Reconstruir mejor también significa sentirte más preparado y menos solo."
+            ]
+          }
+        ]
+      },
+      {
+        type: "message",
+        emphasis: "Cada etapa llegará a su tiempo. Hoy solo necesitas dar el paso que te toca."
       }
     ]
   },

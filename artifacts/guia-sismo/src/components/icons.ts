@@ -17,7 +17,11 @@ import {
   Shirt,
   Sparkles,
   ArrowLeft,
-  AlertTriangle
+  ArrowRight,
+  AlertTriangle,
+  Hammer,
+  Sprout,
+  Route
 } from 'lucide-react';
 
 export const Icons = {
@@ -39,5 +43,9 @@ export const Icons = {
   Shirt,
   Sparkles,
   ArrowLeft,
-  AlertTriangle
+  ArrowRight,
+  AlertTriangle,
+  Hammer,
+  Sprout,
+  Route
 };

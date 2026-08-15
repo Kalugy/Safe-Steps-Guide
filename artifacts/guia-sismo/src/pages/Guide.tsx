@@ -147,6 +147,51 @@ export function Guide() {
                     })}
                   </div>
                 );
+              case 'timeline':
+                return (
+                  <div key={index} className="my-10 space-y-6">
+                    {section.phases.map((phase, i) => {
+                      const Icon = Icons[phase.icon as keyof typeof Icons];
+                      return (
+                        <div key={i} className="bg-white rounded-[1.5rem] border border-border shadow-sm overflow-hidden">
+                          <div className="bg-primary/10 px-6 py-4 flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shrink-0 shadow-sm">
+                              <Icon size={24} strokeWidth={2.25} />
+                            </div>
+                            <div>
+                              <p className="text-[0.95rem] font-bold text-primary uppercase tracking-wide">{phase.period}</p>
+                              <h3 className="text-[1.25rem] font-bold text-foreground leading-snug">{phase.title}</h3>
+                            </div>
+                          </div>
+                          <div className="p-6 space-y-4">
+                            {phase.text && (
+                              <p className="text-[1.1rem] leading-relaxed text-foreground/90">{phase.text}</p>
+                            )}
+                            {phase.list && (
+                              <ul className="space-y-3.5">
+                                {phase.list.map((item, j) => (
+                                  <li key={j} className="flex gap-4 items-start">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-primary/60 mt-2.5 shrink-0" />
+                                    <span className="text-[1.1rem] leading-relaxed font-medium">{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              case 'next-link':
+                return (
+                  <Link key={index} href={section.path} className="block group my-10">
+                    <div className="bg-primary text-primary-foreground active:scale-[0.98] transition-all duration-300 p-6 rounded-[1.25rem] shadow-sm flex items-center justify-between gap-5">
+                      <span className="text-[1.2rem] font-bold">{section.label}</span>
+                      <Icons.ArrowRight size={26} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </Link>
+                );
               default:
                 return null;
             }
