@@ -75,41 +75,40 @@ function ModuleWizard({ modules }: { modules: ModuleData[] }) {
         ))}
       </div>
 
-      {/* Module card */}
-      <div className="bg-white rounded-[1.5rem] border border-border shadow-sm overflow-hidden">
-        <div className="bg-primary/10 px-6 py-5 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shrink-0 shadow-sm">
-            {Icon && <Icon size={24} strokeWidth={2.25} />}
-          </div>
-          <div>
-            <p className="text-[0.9rem] font-bold text-primary uppercase tracking-wide">
-              Módulo {current + 1} de {modules.length}
-            </p>
-            <h3 className="text-[1.25rem] font-bold text-foreground leading-snug">{module.title}</h3>
-          </div>
+      {/* Module content, styled like a guide page */}
+      <div className="flex items-center gap-4 mb-3">
+        <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+          {Icon && <Icon size={28} strokeWidth={2.25} />}
         </div>
-        <div className="p-6 space-y-6">
-          {module.blocks.map((block, i) => (
-            <div key={i} className="space-y-3">
-              {block.heading && (
-                <h4 className="text-[1.2rem] font-bold text-primary leading-snug">{block.heading}</h4>
-              )}
-              {block.text && (
-                <p className="text-[1.1rem] leading-relaxed text-foreground/90">{block.text}</p>
-              )}
-              {block.list && (
-                <ul className="space-y-3.5">
-                  {block.list.map((item, j) => (
-                    <li key={j} className="flex gap-4 items-start">
-                      <div className="w-2.5 h-2.5 rounded-full bg-primary/60 mt-2.5 shrink-0" />
-                      <span className="text-[1.1rem] leading-relaxed font-medium">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-        </div>
+        <p className="text-[0.95rem] font-bold text-primary uppercase tracking-wide">
+          Módulo {current + 1} de {modules.length}
+        </p>
+      </div>
+      <h2 className="text-[2rem] font-bold tracking-tight text-foreground mb-8 leading-tight">
+        {module.title}
+      </h2>
+
+      <div className="space-y-4">
+        {module.blocks.map((block, i) => (
+          <div key={i} className="my-10 space-y-5">
+            {block.heading && (
+              <h3 className="text-[1.4rem] font-bold text-primary">{block.heading}</h3>
+            )}
+            {block.text && (
+              <p className="text-[1.15rem] leading-relaxed text-foreground/90">{block.text}</p>
+            )}
+            {block.list && (
+              <ul className="space-y-4 mt-6">
+                {block.list.map((item, j) => (
+                  <li key={j} className="flex gap-4 items-start bg-white p-5 rounded-2xl border border-border shadow-sm">
+                    <div className="w-2.5 h-2.5 rounded-full bg-primary/60 mt-2.5 shrink-0" />
+                    <span className="text-[1.15rem] leading-relaxed font-medium">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
       </div>
 
       {/* Back / Next buttons */}
