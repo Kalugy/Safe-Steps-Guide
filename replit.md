@@ -1,6 +1,6 @@
-# [Project name]
+# Guía después de un sismo
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Web educativa, gratuita y mobile-first en español que ayuda a personas que acaban de vivir un sismo a saber cuál es su siguiente paso.
 
 ## Run & Operate
 
@@ -30,7 +30,11 @@ _Populate as you build — non-obvious choices a reader couldn't infer from the 
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Pantalla inicial con 8 rutas grandes (no sé qué hacer, pánico, pérdida de un ser querido/mascota/vivienda, necesito algo, buscando a alguien, acompañamiento emocional)
+- 8 guías paso a paso con tono humano y calmado; ejercicio de grounding 5-4-3-2-1
+- Aviso de responsabilidad visible en todas las páginas
+- Frontend-only (sin backend, auth, ni datos personales); contenido en `artifacts/guia-sismo/src/content/data.ts` para fácil actualización/traducción
+- Regla dura: nunca inventar teléfonos, refugios ni recursos; referir genéricamente a autoridades/canales oficiales
 
 ## User preferences
 

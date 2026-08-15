@@ -1,0 +1,347 @@
+Proyecto: Guía después de un sismo
+
+Quiero crear una web educativa, gratuita, rápida y mobile-first para ayudar a personas que acaban de vivir un sismo y no saben qué hacer después.
+
+El objetivo NO es reemplazar a las autoridades, servicios de emergencia, médicos o psicólogos. Tampoco es una plataforma de donaciones. Es una herramienta educativa y humana que ayuda a las personas a tomar decisiones durante las primeras horas y días después de un sismo, especialmente cuando están asustadas, confundidas o atravesando una pérdida.
+
+Idea central
+
+La experiencia debe transmitir:
+
+«No estás solo. No tienes que resolverlo todo ahora. Vamos paso a paso.»
+
+La web debe reducir la sensación de:
+"No sé qué hacer ahora."
+
+y convertirla en:
+"Sé cuál es mi siguiente paso."
+
+---
+
+Experiencia inicial
+
+La página principal debe ser extremadamente sencilla.
+
+Título:
+
+Acabas de pasar por un sismo.
+
+Subtítulo:
+
+Respira. No tienes que resolverlo todo ahora. Vamos paso a paso.
+
+Después mostrar rutas grandes y fáciles de entender:
+
+- 🧭 No sé qué hacer
+- 🧠 Estoy sintiendo pánico
+- ❤️ Perdí a un ser querido
+- 🐕 Perdí a mi mascota
+- 🏠 Perdí mi vivienda
+- 🎒 Necesito algo
+- 👨‍👩‍👧 Estoy buscando a alguien
+- 🤍 Necesito sentirme acompañado
+
+Cada opción debe llevar a una guía específica.
+
+---
+
+1. Guía general: ¿Qué hago después del sismo?
+
+Debe ser la ruta principal para alguien que no sabe qué hacer.
+
+Organizarla por pasos:
+
+Paso 1 — Ponte a salvo
+
+- Aléjate de estructuras dañadas.
+- No regreses a edificios afectados sin autorización.
+- Sigue las instrucciones de las autoridades.
+- Revisa si tú o alguien cercano necesita atención médica.
+
+Paso 2 — Busca a alguien
+
+Explicar que, después de una situación traumática, no es necesario enfrentar todo solo.
+
+Sugerir contactar a:
+
+- familiar
+- amigo
+- vecino
+- persona de confianza
+- autoridad o equipo de emergencia
+
+Paso 3 — Atiende lo urgente
+
+Priorizar:
+
+1. Seguridad
+2. Lesiones
+3. Agua
+4. Refugio
+5. Comunicación
+6. Medicamentos
+7. Alimentación
+
+Paso 4 — No intentes resolverlo todo
+
+Mostrar un mensaje:
+
+«No necesitas solucionar todo hoy. Concéntrate en el siguiente paso.»
+
+---
+
+2. Guía: Estoy sintiendo pánico
+
+Explicar de manera sencilla qué puede ocurrir después de una experiencia aterradora:
+
+- corazón acelerado
+- temblores
+- respiración rápida
+- miedo intenso
+- dificultad para pensar
+- sensación de peligro
+- confusión
+- necesidad de llorar
+
+No diagnosticar.
+
+Explicar que estas pueden ser reacciones al estrés y que si la persona siente que está en peligro, tiene síntomas físicos graves o necesita atención profesional, debe buscar ayuda inmediata.
+
+Incluir un ejercicio breve de grounding:
+
+Mira a tu alrededor.
+
+- 5 cosas que puedes ver.
+- 4 cosas que puedes tocar.
+- 3 cosas que puedes escuchar.
+- 2 cosas que puedes oler.
+- 1 cosa que puedes saborear.
+
+Después:
+
+«Busca a alguien y dile cómo te estás sintiendo. No tienes que pasar por esto completamente solo.»
+
+---
+
+3. Guía: Perdí a un ser querido
+
+Esta sección debe ser especialmente humana y cuidadosa.
+
+No utilizar frases como:
+
+- "Todo pasa por algo."
+- "Tienes que ser fuerte."
+- "Todo estará bien."
+
+En cambio:
+
+«Lo siento. No tienes que ser fuerte en este momento.»
+
+Dividir la guía:
+
+Si todavía no sabes dónde está
+
+- Mantener la calma lo posible.
+- Contactar familiares.
+- Consultar canales oficiales.
+- Contactar organismos de emergencia.
+- Evitar difundir información no confirmada.
+
+Si confirmaste la pérdida
+
+Dar orientación general sobre los siguientes pasos sin intentar reemplazar profesionales.
+
+Recordar:
+
+«No tienes que tomar todas las decisiones hoy.»
+
+Incluir recursos de apoyo emocional cuando estén disponibles.
+
+---
+
+4. Guía: Perdí a mi mascota
+
+Explicar:
+
+- No entrar en edificios peligrosos para buscarla.
+- Preparar una foto reciente.
+- Registrar nombre, características y última ubicación conocida.
+- Contactar refugios, veterinarios y organizaciones locales.
+- Compartir información en redes de manera segura.
+
+Mensaje:
+
+«Tu mascota importa. Es normal sentir miedo, angustia o tristeza por no saber dónde está.»
+
+---
+
+5. Guía: Perdí mi vivienda
+
+Primero explicar:
+
+«Si una estructura está dañada, no regreses únicamente para recuperar pertenencias si existe riesgo.»
+
+Después dividir:
+
+Necesito un lugar donde dormir
+
+Orientar hacia refugios y recursos oficiales.
+
+Necesito cosas básicas
+
+- agua
+- comida
+- ropa
+- medicamentos
+- higiene
+- cargador/electricidad
+
+Perdí documentos
+
+Dar orientación sobre proteger y recuperar documentos importantes.
+
+Mi vivienda está dañada pero todavía está en pie
+
+Explicar que no se debe asumir que es segura únicamente porque sigue en pie y recomendar evaluación/indicaciones de las autoridades competentes.
+
+---
+
+6. Guía: Necesito algo
+
+Crear categorías:
+
+- 💧 Agua
+- 🍚 Comida
+- 🏕️ Refugio
+- 💊 Medicamentos
+- 🧑‍⚕️ Atención médica
+- 📱 Comunicación
+- 🔋 Electricidad
+- 👕 Ropa
+- 🧼 Higiene
+- 🐕 Ayuda para mascota
+
+Cada categoría debe explicar qué hacer, qué priorizar y dónde buscar ayuda, utilizando recursos oficiales cuando estén disponibles.
+
+No prometer que la plataforma entrega recursos.
+
+---
+
+7. Guía: Estoy buscando a alguien
+
+Explicar:
+
+- contactar familiares y personas cercanas
+- utilizar canales oficiales de búsqueda
+- evitar compartir datos personales sensibles públicamente
+- verificar información antes de difundirla
+- no confiar ciegamente en publicaciones no verificadas
+
+La privacidad debe ser una prioridad.
+
+---
+
+8. Sección: No estás solo
+
+Crear una sección emocional con mensajes cortos.
+
+Ejemplos:
+
+«Es normal sentir miedo después de algo así.»
+
+«Pedir ayuda no te hace débil.»
+
+«No tienes que entender todo lo que estás sintiendo ahora.»
+
+«Puedes concentrarte solamente en el siguiente paso.»
+
+Mensaje principal:
+
+«Hoy no necesitas reconstruir tu vida.
+Solo necesitas atravesar este momento.»
+
+---
+
+Diseño
+
+La web debe sentirse:
+
+- tranquila
+- humana
+- segura
+- clara
+- accesible
+- sin exceso de información
+- sin apariencia de aplicación gubernamental
+- sin publicidad
+- sin elementos innecesarios
+
+Mobile-first.
+
+Usar tipografía grande, buen contraste, botones grandes y navegación sencilla.
+
+Evitar interfaces complejas.
+
+Cada pantalla debería responder rápidamente:
+
+¿Qué está pasando?
+¿Qué puedo hacer ahora?
+¿Cuál es mi siguiente paso?
+
+---
+
+Arquitectura técnica inicial
+
+Crear primero una versión extremadamente sencilla.
+
+Preferencia:
+
+- React / Next.js
+- Tailwind CSS
+- TypeScript
+- diseño responsive
+- contenido estructurado en archivos JSON/TS para poder actualizarlo fácilmente
+- sin autenticación
+- sin base de datos inicialmente
+- sin pagos
+- sin funcionalidades innecesarias
+
+La aplicación debe poder funcionar como una web estática si es posible.
+
+Preparar la arquitectura para posteriormente agregar:
+
+- recursos oficiales por país/ciudad
+- números de emergencia
+- ubicación de refugios
+- recursos médicos
+- información actualizada
+- idiomas adicionales
+- modo offline/PWA
+
+---
+
+Seguridad y responsabilidad
+
+Agregar un aviso visible:
+
+«Esta guía proporciona información educativa y no reemplaza las instrucciones de las autoridades, servicios de emergencia, profesionales médicos o profesionales de salud mental. En una emergencia inmediata, busca ayuda de los servicios locales de emergencia.»
+
+No inventar números telefónicos, refugios, hospitales ni recursos.
+
+Los recursos específicos deben provenir de fuentes oficiales y poder actualizarse fácilmente.
+
+No recopilar información personal de los usuarios en la primera versión.
+
+---
+
+Principio principal del producto
+
+No intentar solucionar el desastre completo.
+
+Resolver una sola pregunta:
+
+«"Acaba de ocurrir un sismo. Estoy asustado y no sé qué hacer. ¿Cuál es mi siguiente paso?"»
+
+La web debe responder esa pregunta de la forma más humana, clara y útil posible.
+
+Primero construir el MVP. Priorizar claridad, velocidad y utilidad real sobre cantidad de funcionalidades.

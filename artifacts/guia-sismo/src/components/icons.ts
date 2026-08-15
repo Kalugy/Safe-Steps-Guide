@@ -1,0 +1,43 @@
+import {
+  Compass,
+  Brain,
+  Heart,
+  Dog,
+  Home,
+  Package,
+  Users,
+  HeartHandshake,
+  Droplet,
+  Utensils,
+  Tent,
+  Pill,
+  Stethoscope,
+  Smartphone,
+  Battery,
+  Shirt,
+  Sparkles,
+  ArrowLeft,
+  AlertTriangle
+} from 'lucide-react';
+
+export const Icons = {
+  Compass,
+  Brain,
+  Heart,
+  Dog,
+  Home,
+  Package,
+  Users,
+  HeartHandshake,
+  Droplet,
+  Utensils,
+  Tent,
+  Pill,
+  Stethoscope,
+  Smartphone,
+  Battery,
+  Shirt,
+  Sparkles,
+  ArrowLeft,
+  AlertTriangle
+};

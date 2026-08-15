@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Guía después de un sismo"
+description = "Una web educativa, gratuita y mobile-first en español que acompaña a personas que acaban de vivir un sismo. Ofrece guías paso a paso (qué hacer, pánico, pérdida de un ser querido o mascota, vivienda, necesidades básicas, búsqueda de personas) y una sección de acompañamiento emocional. Sin autenticación, sin base de datos: contenido estructurado en archivos para fácil actualización."
+version = "1.0.0"
+id = "artifacts/guia-sismo"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21071
+
+[services.development]
+run = "pnpm --filter @workspace/guia-sismo run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/guia-sismo", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/guia-sismo/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21071"
+BASE_PATH = "/"
