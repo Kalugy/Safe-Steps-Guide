@@ -4,97 +4,96 @@ import { Icons } from '../components/icons';
 import { Disclaimer } from '../components/Disclaimer';
 import { useEffect, useState } from 'react';
 
-function TimelinePhases({ phases }: { phases: { period?: string; icon: string; title: string; text?: string; list?: string[] }[] }) {
-  const [openIndex, setOpenIndex] = useState<number>(0);
+type ModuleData = {
+  icon: string;
+  title: string;
+  blocks: { heading?: string; text?: string; list?: string[] }[];
+};
+
+function ModuleWizard({ modules }: { modules: ModuleData[] }) {
+  const [current, setCurrent] = useState(0);
+  const module = modules[current];
+  const Icon = Icons[module.icon as keyof typeof Icons];
+
+  const goTo = (i: number) => {
+    setCurrent(i);
+  };
 
   return (
-    <div className="my-10 space-y-5">
-      {phases.map((phase, i) => {
-        const Icon = Icons[phase.icon as keyof typeof Icons];
-        const isOpen = openIndex === i;
-        return (
-          <div key={i} className="bg-white rounded-[1.5rem] border border-border shadow-sm overflow-hidden">
-            <button
-              type="button"
-              onClick={() => setOpenIndex(isOpen ? -1 : i)}
-              aria-expanded={isOpen}
-              className="w-full bg-primary/10 px-6 py-4 flex items-center gap-4 text-left active:bg-primary/20 transition-colors"
-            >
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shrink-0 shadow-sm">
-                {Icon && <Icon size={24} strokeWidth={2.25} />}
-              </div>
-              <div className="flex-1">
-                <p className="text-[0.9rem] font-bold text-primary uppercase tracking-wide">Módulo {i + 1}</p>
-                <h3 className="text-[1.25rem] font-bold text-foreground leading-snug">{phase.title}</h3>
-              </div>
-              <Icons.ChevronDown
-                size={24}
-                strokeWidth={2.5}
-                className={`shrink-0 text-primary transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-            {isOpen && (
-              <div className="p-6 space-y-4">
-                {phase.text && (
-                  <p className="text-[1.1rem] leading-relaxed text-foreground/90">{phase.text}</p>
-                )}
-                {phase.list && (
-                  <ul className="space-y-3.5">
-                    {phase.list.map((item, j) => (
-                      <li key={j} className="flex gap-4 items-start">
-                        <div className="w-2.5 h-2.5 rounded-full bg-primary/60 mt-2.5 shrink-0" />
-                        <span className="text-[1.1rem] leading-relaxed font-medium">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-}
+    <div className="my-10">
+      {/* Progress dots */}
+      <div className="flex items-center justify-center gap-2 mb-6">
+        {modules.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => goTo(i)}
+            aria-label={`Ir al módulo ${i + 1}`}
+            className={`rounded-full transition-all duration-300 ${
+              i === current ? 'w-8 h-2.5 bg-primary' : 'w-2.5 h-2.5 bg-primary/25'
+            }`}
+          />
+        ))}
+      </div>
 
-function Accordion({ items }: { items: { title: string; icon: string; content: string[] }[] }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  return (
-    <div className="my-10 space-y-4">
-      {items.map((item, i) => {
-        const Icon = Icons[item.icon as keyof typeof Icons];
-        const isOpen = openIndex === i;
-        return (
-          <div key={i} className="bg-white rounded-[1.25rem] border border-border shadow-sm overflow-hidden">
-            <button
-              type="button"
-              onClick={() => setOpenIndex(isOpen ? null : i)}
-              aria-expanded={isOpen}
-              className="w-full flex items-center gap-4 p-5 text-left active:bg-secondary/50 transition-colors"
-            >
-              <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                {Icon && <Icon size={22} strokeWidth={2.25} />}
-              </div>
-              <span className="flex-1 text-[1.15rem] font-bold text-foreground leading-snug">{item.title}</span>
-              <Icons.ChevronDown
-                size={24}
-                strokeWidth={2.5}
-                className={`shrink-0 text-primary transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-            {isOpen && (
-              <div className="px-5 pb-6 pt-1 space-y-4">
-                {item.content.map((text, j) => (
-                  <p key={j} className="text-[1.1rem] leading-relaxed text-foreground/90">
-                    {text}
-                  </p>
-                ))}
-              </div>
-            )}
+      {/* Module card */}
+      <div className="bg-white rounded-[1.5rem] border border-border shadow-sm overflow-hidden">
+        <div className="bg-primary/10 px-6 py-5 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shrink-0 shadow-sm">
+            {Icon && <Icon size={24} strokeWidth={2.25} />}
           </div>
-        );
-      })}
+          <div>
+            <p className="text-[0.9rem] font-bold text-primary uppercase tracking-wide">
+              Módulo {current + 1} de {modules.length}
+            </p>
+            <h3 className="text-[1.25rem] font-bold text-foreground leading-snug">{module.title}</h3>
+          </div>
+        </div>
+        <div className="p-6 space-y-6">
+          {module.blocks.map((block, i) => (
+            <div key={i} className="space-y-3">
+              {block.heading && (
+                <h4 className="text-[1.2rem] font-bold text-primary leading-snug">{block.heading}</h4>
+              )}
+              {block.text && (
+                <p className="text-[1.1rem] leading-relaxed text-foreground/90">{block.text}</p>
+              )}
+              {block.list && (
+                <ul className="space-y-3.5">
+                  {block.list.map((item, j) => (
+                    <li key={j} className="flex gap-4 items-start">
+                      <div className="w-2.5 h-2.5 rounded-full bg-primary/60 mt-2.5 shrink-0" />
+                      <span className="text-[1.1rem] leading-relaxed font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Back / Next buttons */}
+      <div className="mt-5 flex gap-4">
+        <button
+          type="button"
+          onClick={() => goTo(current - 1)}
+          disabled={current === 0}
+          className="flex-1 flex items-center justify-center gap-2 p-5 rounded-[1.25rem] bg-white border border-border font-bold text-[1.1rem] text-foreground shadow-sm active:scale-[0.98] transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none"
+        >
+          <Icons.ArrowLeft size={22} strokeWidth={2.5} className="text-primary" />
+          Atrás
+        </button>
+        <button
+          type="button"
+          onClick={() => goTo(current + 1)}
+          disabled={current === modules.length - 1}
+          className="flex-1 flex items-center justify-center gap-2 p-5 rounded-[1.25rem] bg-primary text-primary-foreground font-bold text-[1.1rem] shadow-sm active:scale-[0.98] transition-all duration-300 disabled:opacity-40 disabled:pointer-events-none"
+        >
+          Siguiente
+          <Icons.ArrowRight size={22} strokeWidth={2.5} />
+        </button>
+      </div>
     </div>
   );
 }
@@ -247,10 +246,8 @@ export function Guide() {
                     })}
                   </div>
                 );
-              case 'timeline':
-                return <TimelinePhases key={index} phases={section.phases} />;
-              case 'accordion':
-                return <Accordion key={index} items={section.items} />;
+              case 'modules':
+                return <ModuleWizard key={index} modules={section.modules} />;
               case 'next-link':
                 return (
                   <Link key={index} href={section.path} className="block group my-10">

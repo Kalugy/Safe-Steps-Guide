@@ -24,9 +24,8 @@ export type SectionData =
   | { type: 'quotes'; list: string[] }
   | { type: 'grounding'; title: string; text: string; list: { count: string; text: string }[] }
   | { type: 'categories'; items: { icon: string; title: string; text: string }[] }
-  | { type: 'timeline'; phases: { period?: string; icon: string; title: string; text?: string; list?: string[] }[] }
   | { type: 'next-link'; path: string; label: string }
-  | { type: 'accordion'; items: { title: string; icon: string; content: string[] }[] };
+  | { type: 'modules'; modules: { icon: string; title: string; blocks: { heading?: string; text?: string; list?: string[] }[] }[] };
 
 export interface GuideData {
   title: string;
@@ -89,86 +88,116 @@ export const guidesData: Record<string, GuideData> = {
     sections: [
       {
         type: "text",
-        text: "Cuando pasan las primeras horas, es normal preguntarse qué sigue. No hay un calendario exacto: cada persona y cada situación avanza a su propio ritmo. Estos son consejos generales, paso a paso."
+        text: "Cuando pasan las primeras horas, es normal preguntarse qué sigue. No hay un calendario exacto: cada persona y cada situación avanza a su propio ritmo. Recorre estos módulos a tu ritmo, uno a la vez."
       },
       {
-        type: "step",
-        title: "¿Puede ocurrir otro sismo?",
-        text: "Sí, pueden presentarse réplicas. Y también puede que no ocurran. Lo importante es mantener la calma y respirar hondo. Antes de pensar en todo lo demás, enfoca tu mente en tu alrededor y en tu seguridad."
-      },
-      {
-        type: "timeline",
-        phases: [
+        type: "modules",
+        modules: [
+          {
+            icon: "Info",
+            title: "Entender lo que pasó",
+            blocks: [
+              {
+                heading: "¿Puede ocurrir otro sismo?",
+                text: "Sí, pueden presentarse réplicas. Y también puede que no ocurran. Lo importante es mantener la calma y respirar hondo. Antes de pensar en todo lo demás, enfoca tu mente en tu alrededor y en tu seguridad."
+              },
+              {
+                heading: "Un poco de contexto",
+                list: [
+                  "En 2026 se han registrado sismos importantes en distintas partes del mundo, como uno de magnitud 7.5 cerca de Tonga (marzo) y dos en Venezuela de 7.5 y 7.2 (junio).",
+                  "Cada año ocurren miles de sismos en el mundo. La mayoría son pequeños y pasan sin causar daños.",
+                  "La Tierra está formada por grandes placas que se mueven muy lentamente. Cuando liberan energía acumulada, sentimos un sismo. Es un proceso natural del planeta."
+                ]
+              },
+              {
+                heading: "No te culpes",
+                text: "Los desastres naturales son impredecibles: nadie puede anticiparlos, ni siquiera los expertos. Nada de lo que hiciste o dejaste de hacer causó el sismo. Lo que sientes es una reacción normal ante algo fuera de tu control. Sé amable contigo."
+              }
+            ]
+          },
           {
             icon: "Users",
             title: "Encontrar y estabilizar",
-            list: [
-              "Confirma que tú y los tuyos estén a salvo y juntos en lo posible.",
-              "Mantén la calma: si sientes una réplica, respira hondo y aléjate de estructuras dañadas.",
-              "Asegura lo básico: agua, alimento, abrigo y un lugar seguro donde descansar.",
-              "Mantente informado solo por canales oficiales."
+            blocks: [
+              {
+                text: "Lo primero es asegurarte de que tú y los tuyos estén bien. Nada más es urgente todavía."
+              },
+              {
+                list: [
+                  "Confirma que tú y los tuyos estén a salvo y juntos en lo posible.",
+                  "Mantén la calma: si sientes una réplica, respira hondo y aléjate de estructuras dañadas.",
+                  "Asegura lo básico: agua, alimento, abrigo y un lugar seguro donde descansar.",
+                  "Mantente informado solo por canales oficiales."
+                ]
+              }
             ]
           },
           {
             icon: "Home",
             title: "Evaluar daños y conseguir ayuda",
-            list: [
-              "No entres a tu vivienda sin una evaluación si tiene daños visibles.",
-              "Documenta los daños con fotos cuando sea seguro hacerlo.",
-              "Acude a los puntos de asistencia y registros de ayuda habilitados por las autoridades.",
-              "Pregunta por apoyo para necesidades médicas, documentos y refugio temporal."
+            blocks: [
+              {
+                text: "Cuando lo esencial esté cubierto, llega el momento de revisar con calma cómo quedaron las cosas y buscar apoyo."
+              },
+              {
+                list: [
+                  "No entres a tu vivienda sin una evaluación si tiene daños visibles.",
+                  "Documenta los daños con fotos cuando sea seguro hacerlo.",
+                  "Acude a los puntos de asistencia y registros de ayuda habilitados por las autoridades.",
+                  "Pregunta por apoyo para necesidades médicas, documentos y refugio temporal."
+                ]
+              }
             ]
           },
           {
             icon: "Hammer",
             title: "Recuperar y reconstruir",
-            list: [
-              "Retoma poco a poco tus rutinas: dormir, comer y descansar también es recuperarse.",
-              "Gestiona trámites de vivienda, documentos y apoyos con calma, paso a paso.",
-              "Apóyate en tu comunidad: pedir y ofrecer ayuda hace la carga más ligera.",
-              "Si el miedo o la tristeza no ceden, buscar apoyo emocional es un acto de cuidado."
+            blocks: [
+              {
+                text: "La recuperación no es solo material: tu descanso y tu bienestar también cuentan."
+              },
+              {
+                list: [
+                  "Retoma poco a poco tus rutinas: dormir, comer y descansar también es recuperarse.",
+                  "Gestiona trámites de vivienda, documentos y apoyos con calma, paso a paso.",
+                  "Apóyate en tu comunidad: pedir y ofrecer ayuda hace la carga más ligera.",
+                  "Si el miedo o la tristeza no ceden, buscar apoyo emocional es un acto de cuidado."
+                ]
+              }
+            ]
+          },
+          {
+            icon: "HeartHandshake",
+            title: "Cuidar tu bienestar emocional",
+            blocks: [
+              {
+                text: "Después de un sismo, las emociones también necesitan atención. No hay una forma «correcta» de sentirse."
+              },
+              {
+                list: [
+                  "Habla de lo que viviste con personas de confianza: ponerlo en palabras ayuda.",
+                  "Permítete descansar sin culpa: el cuerpo y la mente necesitan recuperarse.",
+                  "Limita el tiempo que pasas viendo noticias o redes si te generan angustia.",
+                  "Si notas que el miedo, el insomnio o la tristeza persisten, busca apoyo profesional. Pedir ayuda es un acto de valentía."
+                ]
+              }
             ]
           },
           {
             icon: "Sprout",
             title: "Mirar hacia adelante con más calma",
-            list: [
-              "Prepara un plan familiar: puntos de encuentro y contactos de emergencia.",
-              "Reactivación económica: retoma poco a poco tu trabajo, oficio o fuente de ingresos, un paso a la vez.",
-              "Reconéctate con tu comunidad: las redes de apoyo hacen todo más llevadero.",
-              "Celebra cada avance, por pequeño que sea: cada día que pasa estás saliendo adelante."
-            ]
-          }
-        ]
-      },
-      {
-        type: "accordion",
-        items: [
-          {
-            title: "Información",
-            icon: "Info",
-            content: [
-              "En 2026 se han registrado sismos importantes en distintas partes del mundo, como uno de magnitud 7.5 cerca de Tonga (marzo) y dos en Venezuela de 7.5 y 7.2 (junio).",
-              "Cada año ocurren miles de sismos en el mundo. La mayoría son pequeños y pasan sin causar daños.",
-              "Esto es un fenómeno natural del planeta: le ocurre a muchas personas y comunidades, no solo a ti."
-            ]
-          },
-          {
-            title: "¿Por qué ocurren los sismos?",
-            icon: "Globe",
-            content: [
-              "La Tierra está formada por grandes placas que se mueven muy lentamente. Cuando liberan energía acumulada, sentimos un sismo.",
-              "Es un proceso natural del planeta: no depende de nada que hagamos las personas.",
-              "Hoy en día, ninguna tecnología puede predecir con exactitud cuándo ni dónde ocurrirá un sismo."
-            ]
-          },
-          {
-            title: "No te culpes",
-            icon: "HeartHandshake",
-            content: [
-              "Los desastres naturales son impredecibles. Nadie puede anticiparlos, ni siquiera los expertos.",
-              "Nada de lo que hiciste o dejaste de hacer causó el sismo. No es tu culpa.",
-              "Lo que sientes es una reacción normal ante algo que estaba fuera de tu control. Sé amable contigo."
+            blocks: [
+              {
+                text: "Poco a poco, la vida vuelve a tomar forma. Cada pequeño paso cuenta."
+              },
+              {
+                list: [
+                  "Prepara un plan familiar: puntos de encuentro y contactos de emergencia.",
+                  "Reactivación económica: retoma poco a poco tu trabajo, oficio o fuente de ingresos, un paso a la vez.",
+                  "Reconéctate con tu comunidad: las redes de apoyo hacen todo más llevadero.",
+                  "Celebra cada avance, por pequeño que sea: cada día que pasa estás saliendo adelante."
+                ]
+              }
             ]
           }
         ]
