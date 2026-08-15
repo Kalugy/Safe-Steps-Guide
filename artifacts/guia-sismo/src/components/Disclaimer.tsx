@@ -23,7 +23,7 @@ export function Disclaimer() {
         </a>
       </p>
       <p className="mt-4 text-[1rem] leading-relaxed text-foreground/70 max-w-md mx-auto">
-        Página sin ánimo de lucro, creada para apoyar a las personas afectadas por el sismo del 10 de agosto y otros desastres naturales.
+        Página informativa y educativa creada con el propósito de brindar información, orientación y recursos útiles para apoyar a las personas afectadas por el desastre natural ocurrido en Colombia.
       </p>
     </div>
   );
