@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 type ModuleData = {
   icon: string;
   title: string;
+  summary: string;
   blocks: { heading?: string; text?: string; list?: string[] }[];
 };
 
@@ -18,10 +19,10 @@ function ModuleWizard({ modules }: { modules: ModuleData[] }) {
     window.scrollTo({ top: 0 });
   };
 
-  // List view: module titles as tappable cards
+  // List view: tiles with icon, title and short description
   if (current === null) {
     return (
-      <div className="my-10 space-y-4">
+      <div className="my-10 grid grid-cols-2 gap-4">
         {modules.map((mod, i) => {
           const Icon = Icons[mod.icon as keyof typeof Icons];
           return (
@@ -29,16 +30,20 @@ function ModuleWizard({ modules }: { modules: ModuleData[] }) {
               key={i}
               type="button"
               onClick={() => goTo(i)}
-              className="w-full bg-white rounded-[1.25rem] border border-border shadow-sm p-5 flex items-center gap-4 text-left active:scale-[0.98] transition-all duration-300"
+              className="bg-white rounded-[1.25rem] border border-border shadow-sm p-5 flex flex-col items-start gap-3 text-left active:scale-[0.97] transition-all duration-300"
             >
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                 {Icon && <Icon size={24} strokeWidth={2.25} />}
               </div>
               <div className="flex-1">
-                <p className="text-[0.85rem] font-bold text-primary uppercase tracking-wide">Módulo {i + 1}</p>
-                <span className="text-[1.15rem] font-bold text-foreground leading-snug">{mod.title}</span>
+                <p className="text-[0.8rem] font-bold text-primary uppercase tracking-wide mb-1">Módulo {i + 1}</p>
+                <p className="text-[1.05rem] font-bold text-foreground leading-snug">{mod.title}</p>
+                <p className="text-[0.95rem] text-muted-foreground leading-snug mt-1.5">{mod.summary}</p>
               </div>
-              <Icons.ArrowRight size={22} strokeWidth={2.5} className="shrink-0 text-primary" />
+              <span className="inline-flex items-center gap-1.5 text-primary font-semibold text-[0.95rem]">
+                Leer
+                <Icons.ArrowRight size={18} strokeWidth={2.5} />
+              </span>
             </button>
           );
         })}

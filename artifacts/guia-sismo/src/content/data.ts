@@ -25,7 +25,7 @@ export type SectionData =
   | { type: 'grounding'; title: string; text: string; list: { count: string; text: string }[] }
   | { type: 'categories'; items: { icon: string; title: string; text: string }[] }
   | { type: 'next-link'; path: string; label: string }
-  | { type: 'modules'; modules: { icon: string; title: string; blocks: { heading?: string; text?: string; list?: string[] }[] }[] };
+  | { type: 'modules'; modules: { icon: string; title: string; summary: string; blocks: { heading?: string; text?: string; list?: string[] }[] }[] };
 
 export interface GuideData {
   title: string;
@@ -96,6 +96,7 @@ export const guidesData: Record<string, GuideData> = {
           {
             icon: "Info",
             title: "Entender lo que pasó",
+            summary: "Réplicas, contexto y por qué no es tu culpa.",
             blocks: [
               {
                 heading: "¿Puede ocurrir otro sismo?",
@@ -118,6 +119,7 @@ export const guidesData: Record<string, GuideData> = {
           {
             icon: "Users",
             title: "Encontrar y estabilizar",
+            summary: "Lo primero: que tú y los tuyos estén bien.",
             blocks: [
               {
                 text: "Lo primero es asegurarte de que tú y los tuyos estén bien. Nada más es urgente todavía."
@@ -135,6 +137,7 @@ export const guidesData: Record<string, GuideData> = {
           {
             icon: "Home",
             title: "Evaluar daños y conseguir ayuda",
+            summary: "Revisa con calma y busca apoyo oficial.",
             blocks: [
               {
                 text: "Cuando lo esencial esté cubierto, llega el momento de revisar con calma cómo quedaron las cosas y buscar apoyo."
@@ -152,6 +155,7 @@ export const guidesData: Record<string, GuideData> = {
           {
             icon: "Hammer",
             title: "Recuperar y reconstruir",
+            summary: "Rutinas, trámites y comunidad, paso a paso.",
             blocks: [
               {
                 text: "La recuperación no es solo material: tu descanso y tu bienestar también cuentan."
@@ -169,6 +173,7 @@ export const guidesData: Record<string, GuideData> = {
           {
             icon: "HeartHandshake",
             title: "Cuidar tu bienestar emocional",
+            summary: "Tus emociones también necesitan atención.",
             blocks: [
               {
                 text: "Después de un sismo, las emociones también necesitan atención. No hay una forma «correcta» de sentirse."
@@ -186,6 +191,7 @@ export const guidesData: Record<string, GuideData> = {
           {
             icon: "Sprout",
             title: "Mirar hacia adelante con más calma",
+            summary: "Pequeños pasos para volver a empezar.",
             blocks: [
               {
                 text: "Poco a poco, la vida vuelve a tomar forma. Cada pequeño paso cuenta."
