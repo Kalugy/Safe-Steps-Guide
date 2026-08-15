@@ -21,7 +21,10 @@ import {
   AlertTriangle,
   Hammer,
   Sprout,
-  Route
+  Route,
+  Info,
+  Globe,
+  ChevronDown
 } from 'lucide-react';
 
 export const Icons = {
@@ -47,5 +50,8 @@ export const Icons = {
   AlertTriangle,
   Hammer,
   Sprout,
-  Route
+  Route,
+  Info,
+  Globe,
+  ChevronDown
 };

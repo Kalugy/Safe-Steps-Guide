@@ -2,7 +2,49 @@ import { useRoute, Link, useLocation } from 'wouter';
 import { guidesData, homeContent } from '../content/data';
 import { Icons } from '../components/icons';
 import { Disclaimer } from '../components/Disclaimer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+function Accordion({ items }: { items: { title: string; icon: string; content: string[] }[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <div className="my-10 space-y-4">
+      {items.map((item, i) => {
+        const Icon = Icons[item.icon as keyof typeof Icons];
+        const isOpen = openIndex === i;
+        return (
+          <div key={i} className="bg-white rounded-[1.25rem] border border-border shadow-sm overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setOpenIndex(isOpen ? null : i)}
+              aria-expanded={isOpen}
+              className="w-full flex items-center gap-4 p-5 text-left active:bg-secondary/50 transition-colors"
+            >
+              <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                {Icon && <Icon size={22} strokeWidth={2.25} />}
+              </div>
+              <span className="flex-1 text-[1.15rem] font-bold text-foreground leading-snug">{item.title}</span>
+              <Icons.ChevronDown
+                size={24}
+                strokeWidth={2.5}
+                className={`shrink-0 text-primary transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+            {isOpen && (
+              <div className="px-5 pb-6 pt-1 space-y-4">
+                {item.content.map((text, j) => (
+                  <p key={j} className="text-[1.1rem] leading-relaxed text-foreground/90">
+                    {text}
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export function Guide() {
   const [match, params] = useRoute('/guia/:id');
@@ -190,6 +232,8 @@ export function Guide() {
                     })}
                   </div>
                 );
+              case 'accordion':
+                return <Accordion key={index} items={section.items} />;
               case 'next-link':
                 return (
                   <Link key={index} href={section.path} className="block group my-10">

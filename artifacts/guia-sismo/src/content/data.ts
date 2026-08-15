@@ -25,7 +25,8 @@ export type SectionData =
   | { type: 'grounding'; title: string; text: string; list: { count: string; text: string }[] }
   | { type: 'categories'; items: { icon: string; title: string; text: string }[] }
   | { type: 'timeline'; phases: { period?: string; icon: string; title: string; text?: string; list?: string[] }[] }
-  | { type: 'next-link'; path: string; label: string };
+  | { type: 'next-link'; path: string; label: string }
+  | { type: 'accordion'; items: { title: string; icon: string; content: string[] }[] };
 
 export interface GuideData {
   title: string;
@@ -136,6 +137,38 @@ export const guidesData: Record<string, GuideData> = {
               "Reactivación económica: retoma poco a poco tu trabajo, oficio o fuente de ingresos, un paso a la vez.",
               "Reconéctate con tu comunidad: las redes de apoyo hacen todo más llevadero.",
               "Celebra cada avance, por pequeño que sea: cada día que pasa estás saliendo adelante."
+            ]
+          }
+        ]
+      },
+      {
+        type: "accordion",
+        items: [
+          {
+            title: "Información: ¿sabías que…?",
+            icon: "Info",
+            content: [
+              "El sismo más fuerte de 2026 hasta ahora fue de magnitud 7.5, registrado cerca de Tonga, en el océano Pacífico (marzo de 2026).",
+              "En junio de 2026, Venezuela vivió dos sismos seguidos de magnitud 7.5 y 7.2, los más fuertes en más de un siglo en ese país.",
+              "Cada año ocurren miles de sismos en el mundo. La mayoría son pequeños y no causan daños."
+            ]
+          },
+          {
+            title: "¿Por qué ocurren los sismos?",
+            icon: "Globe",
+            content: [
+              "La Tierra está formada por grandes placas que se mueven muy lentamente. Cuando liberan energía acumulada, sentimos un sismo.",
+              "Es un proceso natural del planeta: no depende de nada que hagamos las personas.",
+              "Hoy en día, ninguna tecnología puede predecir con exactitud cuándo ni dónde ocurrirá un sismo."
+            ]
+          },
+          {
+            title: "No te culpes",
+            icon: "HeartHandshake",
+            content: [
+              "Los desastres naturales son impredecibles. Nadie puede anticiparlos, ni siquiera los expertos.",
+              "Nada de lo que hiciste o dejaste de hacer causó el sismo. No es tu culpa.",
+              "Lo que sientes es una reacción normal ante algo que estaba fuera de tu control. Sé amable contigo."
             ]
           }
         ]
