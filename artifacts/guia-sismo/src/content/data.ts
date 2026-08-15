@@ -418,8 +418,21 @@ export const guidesData: Record<string, GuideData> = {
         ]
       },
       {
+        type: "text",
+        text: "Si te sientes solo, busca compañía y apoyo. No tienes que atravesar este momento sin ayuda:"
+      },
+      {
+        type: "list",
+        list: [
+          "Busca un punto de ayuda, refugio, centro comunitario o lugar de atención cercano.",
+          "Pregunta allí dónde puedes conseguir apoyo psicológico o acompañamiento emocional.",
+          "Acércate a una persona de confianza y dile cómo te sientes, aunque no sepas exactamente qué necesitas.",
+          "Si sientes que estás en peligro o no puedes mantenerte a salvo, pide ayuda inmediata a los servicios de emergencia de tu zona."
+        ]
+      },
+      {
         type: "message",
-        emphasis: "Hoy no necesitas reconstruir tu vida.\nSolo necesitas atravesar este momento."
+        emphasis: "Si llegaste hasta aquí, ya diste un paso importante.\nNo tienes que pasar por esto a solas."
       }
     ]
   }
