@@ -11,11 +11,18 @@ type ModuleData = {
   blocks: { heading?: string; text?: string; list?: string[] }[];
 };
 
-function ModuleWizard({ modules }: { modules: ModuleData[] }) {
+function ModuleWizard({
+  modules,
+  onOpenChange,
+}: {
+  modules: ModuleData[];
+  onOpenChange?: (open: boolean) => void;
+}) {
   const [current, setCurrent] = useState<number | null>(null);
 
   const goTo = (i: number | null) => {
     setCurrent(i);
+    onOpenChange?.(i !== null);
     window.scrollTo({ top: 0 });
   };
 
@@ -46,7 +53,6 @@ function ModuleWizard({ modules }: { modules: ModuleData[] }) {
   }
 
   const module = modules[current];
-  const Icon = Icons[module.icon as keyof typeof Icons];
 
   return (
     <div className="my-10">
@@ -60,30 +66,7 @@ function ModuleWizard({ modules }: { modules: ModuleData[] }) {
         <span className="text-[1.05rem]">Todos los módulos</span>
       </button>
 
-      {/* Progress dots */}
-      <div className="flex items-center justify-center gap-2 mb-6">
-        {modules.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => goTo(i)}
-            aria-label={`Ir al módulo ${i + 1}`}
-            className={`rounded-full transition-all duration-300 ${
-              i === current ? 'w-8 h-2.5 bg-primary' : 'w-2.5 h-2.5 bg-primary/25'
-            }`}
-          />
-        ))}
-      </div>
-
       {/* Module content, styled like a guide page */}
-      <div className="flex items-center gap-4 mb-3">
-        <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-          {Icon && <Icon size={28} strokeWidth={2.25} />}
-        </div>
-        <p className="text-[0.95rem] font-bold text-primary uppercase tracking-wide">
-          Módulo {current + 1} de {modules.length}
-        </p>
-      </div>
       <h2 className="text-[2rem] font-bold tracking-tight text-foreground mb-8 leading-tight">
         {module.title}
       </h2>
@@ -141,6 +124,11 @@ export function Guide() {
   const id = params?.id;
   const guide = id ? guidesData[id] : null;
   const [, setLocation] = useLocation();
+  const [moduleOpen, setModuleOpen] = useState(false);
+
+  useEffect(() => {
+    setModuleOpen(false);
+  }, [id]);
 
   useEffect(() => {
     if (match && !guide) {
@@ -166,12 +154,15 @@ export function Guide() {
       </div>
 
       <div className="px-6 py-10 flex-1">
-        <h1 className="text-[2.2rem] font-bold tracking-tight text-foreground mb-10 animate-gentle opacity-0 delay-100 leading-tight">
-          {guide.title}
-        </h1>
+        {!moduleOpen && (
+          <h1 className="text-[2.2rem] font-bold tracking-tight text-foreground mb-10 animate-gentle opacity-0 delay-100 leading-tight">
+            {guide.title}
+          </h1>
+        )}
 
         <div className="animate-gentle opacity-0 delay-200 space-y-4">
           {guide.sections.map((section, index) => {
+            if (moduleOpen && section.type !== 'modules') return null;
             switch (section.type) {
               case 'text':
                 return (
@@ -285,7 +276,7 @@ export function Guide() {
                   </div>
                 );
               case 'modules':
-                return <ModuleWizard key={index} modules={section.modules} />;
+                return <ModuleWizard key={index} modules={section.modules} onOpenChange={setModuleOpen} />;
               case 'next-link':
                 return (
                   <Link key={index} href={section.path} className="block group my-10">
@@ -302,7 +293,7 @@ export function Guide() {
         </div>
 
         {/* Prev / Next navigation */}
-        <div className="mt-12 pt-8 border-t border-border/60 flex flex-col gap-4">
+        <div className={moduleOpen ? 'hidden' : 'mt-12 pt-8 border-t border-border/60 flex flex-col gap-4'}>
           {nextRoute && (
             <Link href={nextRoute.path} className="block group">
               <div className="bg-primary text-primary-foreground active:scale-[0.98] transition-all duration-300 p-6 rounded-[1.25rem] shadow-sm flex items-center justify-between gap-5">
