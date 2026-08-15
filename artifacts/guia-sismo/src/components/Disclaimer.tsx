@@ -8,19 +8,16 @@ export function Disclaimer() {
         Hecho con <span className="text-primary" aria-label="amor">♥</span> en Colombia
       </p>
       <p className="mt-3 text-[1.05rem] font-semibold text-foreground/80 flex items-center justify-center gap-2 flex-wrap">
-        Julián Trujillo
-        <span className="bg-primary/10 text-primary text-[0.85rem] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Builder</span>
-        <span className="text-muted-foreground font-medium">· 2026</span>
-      </p>
-      <p className="mt-1">
         <a
           href="https://julianprojects.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-primary font-semibold underline underline-offset-4 hover:opacity-80 transition-opacity"
+          className="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity"
         >
-          julianprojects.com
+          Julián Trujillo
         </a>
+        <span className="bg-primary/10 text-primary text-[0.85rem] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Builder</span>
+        <span className="text-muted-foreground font-medium">· 2026</span>
       </p>
       <p className="mt-4 text-[1rem] leading-relaxed text-foreground/70 max-w-md mx-auto">
         Página informativa y educativa creada con el propósito de brindar información, orientación y recursos útiles para apoyar a las personas afectadas por el desastre natural ocurrido en Colombia.
