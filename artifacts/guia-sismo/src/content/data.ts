@@ -100,9 +100,21 @@ export const guidesData: Record<string, GuideData> = {
               {
                 heading: "Un poco de contexto",
                 list: [
-                  "En 2026 se han registrado sismos importantes en distintas partes del mundo, como uno de magnitud 7.5 cerca de Tonga (marzo) y dos en Venezuela de 7.5 y 7.2 (junio).",
+                  "El sismo de magnitud 7,4 del 10 de agosto de 2026 fue el cuarto de mayor magnitud registrado en el mundo durante 2026 hasta esa fecha. Su epicentro estuvo cerca de San José del Palmar, Chocó.",
+                  "En 2026 también se han registrado sismos importantes en distintas partes del mundo, como uno de magnitud 7,5 cerca de Tonga y dos en Venezuela de 7,5 y 7,2.",
                   "Cada año ocurren miles de sismos en el mundo. La mayoría son pequeños y pasan sin causar daños.",
                   "La Tierra está formada por grandes placas que se mueven muy lentamente. Cuando liberan energía acumulada, sentimos un sismo. Es un proceso natural del planeta."
+                ]
+              },
+              {
+                heading: "El sismo en cifras",
+                text: "Estas son las cifras del último balance humanitario disponible, con corte del 12 de agosto de 2026 a las 6:30 p. m. Las cifras pueden cambiar mientras continúan las evaluaciones y la atención.",
+                list: [
+                  "Más de 49.214 personas afectadas y 30.324 familias impactadas.",
+                  "3.771 personas heridas y 241 personas fallecidas.",
+                  "Más de 54.900 viviendas destruidas o dañadas.",
+                  "Se reportaron afectaciones en 13 departamentos.",
+                  "Las ciudades con mayores afectaciones reportadas incluyen Cali, Pereira, Quibdó, Manizales, Armenia y Popayán."
                 ]
               },
               {
