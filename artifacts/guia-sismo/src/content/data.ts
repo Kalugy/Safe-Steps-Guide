@@ -133,9 +133,9 @@ export const guidesData: Record<string, GuideData> = {
             title: "Mirar hacia adelante con más calma",
             list: [
               "Prepara un plan familiar: puntos de encuentro y contactos de emergencia.",
-              "Arma una mochila de emergencia con agua, linterna, botiquín y copias de documentos.",
-              "Identifica las zonas seguras de tu vivienda y de tu barrio.",
-              "Cada pequeño paso cuenta: sentirte más preparado te da tranquilidad, a tu ritmo y con lo que tengas a la mano."
+              "Reactivación económica: retoma poco a poco tu trabajo, oficio o fuente de ingresos, un paso a la vez.",
+              "Reconéctate con tu comunidad: las redes de apoyo hacen todo más llevadero.",
+              "Celebra cada avance, por pequeño que sea: cada día que pasa estás saliendo adelante."
             ]
           }
         ]
