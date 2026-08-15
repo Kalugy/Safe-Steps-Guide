@@ -11,16 +11,56 @@ type ModuleData = {
 };
 
 function ModuleWizard({ modules }: { modules: ModuleData[] }) {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState<number | null>(null);
+
+  const goTo = (i: number | null) => {
+    setCurrent(i);
+    window.scrollTo({ top: 0 });
+  };
+
+  // List view: module titles as tappable cards
+  if (current === null) {
+    return (
+      <div className="my-10 space-y-4">
+        {modules.map((mod, i) => {
+          const Icon = Icons[mod.icon as keyof typeof Icons];
+          return (
+            <button
+              key={i}
+              type="button"
+              onClick={() => goTo(i)}
+              className="w-full bg-white rounded-[1.25rem] border border-border shadow-sm p-5 flex items-center gap-4 text-left active:scale-[0.98] transition-all duration-300"
+            >
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                {Icon && <Icon size={24} strokeWidth={2.25} />}
+              </div>
+              <div className="flex-1">
+                <p className="text-[0.85rem] font-bold text-primary uppercase tracking-wide">Módulo {i + 1}</p>
+                <span className="text-[1.15rem] font-bold text-foreground leading-snug">{mod.title}</span>
+              </div>
+              <Icons.ArrowRight size={22} strokeWidth={2.5} className="shrink-0 text-primary" />
+            </button>
+          );
+        })}
+      </div>
+    );
+  }
+
   const module = modules[current];
   const Icon = Icons[module.icon as keyof typeof Icons];
 
-  const goTo = (i: number) => {
-    setCurrent(i);
-  };
-
   return (
     <div className="my-10">
+      {/* Back to module list */}
+      <button
+        type="button"
+        onClick={() => goTo(null)}
+        className="inline-flex items-center gap-2 text-primary font-semibold mb-5 p-2 -ml-2 rounded-xl active:bg-secondary transition-colors"
+      >
+        <Icons.ArrowLeft size={20} strokeWidth={2.5} />
+        <span className="text-[1.05rem]">Todos los módulos</span>
+      </button>
+
       {/* Progress dots */}
       <div className="flex items-center justify-center gap-2 mb-6">
         {modules.map((_, i) => (
