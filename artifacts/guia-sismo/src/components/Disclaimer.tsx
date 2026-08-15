@@ -10,6 +10,7 @@ export function Disclaimer() {
       <p className="mt-3 text-[1.05rem] font-semibold text-foreground/80 flex items-center justify-center gap-2 flex-wrap">
         Julián Trujillo
         <span className="bg-primary/10 text-primary text-[0.85rem] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Builder</span>
+        <span className="text-muted-foreground font-medium">· 2026</span>
       </p>
       <p className="mt-1">
         <a
@@ -21,8 +22,8 @@ export function Disclaimer() {
           julianprojects.com
         </a>
       </p>
-      <p className="mt-4 text-[1.05rem] italic text-foreground/70">
-        Mi granito de arena. No estás solo, estamos contigo.
+      <p className="mt-4 text-[1rem] leading-relaxed text-foreground/70 max-w-md mx-auto">
+        Página sin ánimo de lucro, creada para apoyar a las personas afectadas por el sismo del 10 de agosto y otros desastres naturales.
       </p>
     </div>
   );
