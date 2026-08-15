@@ -4,6 +4,59 @@ import { Icons } from '../components/icons';
 import { Disclaimer } from '../components/Disclaimer';
 import { useEffect, useState } from 'react';
 
+function TimelinePhases({ phases }: { phases: { period?: string; icon: string; title: string; text?: string; list?: string[] }[] }) {
+  const [openIndex, setOpenIndex] = useState<number>(0);
+
+  return (
+    <div className="my-10 space-y-5">
+      {phases.map((phase, i) => {
+        const Icon = Icons[phase.icon as keyof typeof Icons];
+        const isOpen = openIndex === i;
+        return (
+          <div key={i} className="bg-white rounded-[1.5rem] border border-border shadow-sm overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setOpenIndex(isOpen ? -1 : i)}
+              aria-expanded={isOpen}
+              className="w-full bg-primary/10 px-6 py-4 flex items-center gap-4 text-left active:bg-primary/20 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shrink-0 shadow-sm">
+                {Icon && <Icon size={24} strokeWidth={2.25} />}
+              </div>
+              <div className="flex-1">
+                <p className="text-[0.9rem] font-bold text-primary uppercase tracking-wide">Módulo {i + 1}</p>
+                <h3 className="text-[1.25rem] font-bold text-foreground leading-snug">{phase.title}</h3>
+              </div>
+              <Icons.ChevronDown
+                size={24}
+                strokeWidth={2.5}
+                className={`shrink-0 text-primary transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+            {isOpen && (
+              <div className="p-6 space-y-4">
+                {phase.text && (
+                  <p className="text-[1.1rem] leading-relaxed text-foreground/90">{phase.text}</p>
+                )}
+                {phase.list && (
+                  <ul className="space-y-3.5">
+                    {phase.list.map((item, j) => (
+                      <li key={j} className="flex gap-4 items-start">
+                        <div className="w-2.5 h-2.5 rounded-full bg-primary/60 mt-2.5 shrink-0" />
+                        <span className="text-[1.1rem] leading-relaxed font-medium">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function Accordion({ items }: { items: { title: string; icon: string; content: string[] }[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -195,43 +248,7 @@ export function Guide() {
                   </div>
                 );
               case 'timeline':
-                return (
-                  <div key={index} className="my-10 space-y-6">
-                    {section.phases.map((phase, i) => {
-                      const Icon = Icons[phase.icon as keyof typeof Icons];
-                      return (
-                        <div key={i} className="bg-white rounded-[1.5rem] border border-border shadow-sm overflow-hidden">
-                          <div className="bg-primary/10 px-6 py-4 flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shrink-0 shadow-sm">
-                              <Icon size={24} strokeWidth={2.25} />
-                            </div>
-                            <div>
-                              {phase.period && (
-                                <p className="text-[0.95rem] font-bold text-primary uppercase tracking-wide">{phase.period}</p>
-                              )}
-                              <h3 className="text-[1.25rem] font-bold text-foreground leading-snug">{phase.title}</h3>
-                            </div>
-                          </div>
-                          <div className="p-6 space-y-4">
-                            {phase.text && (
-                              <p className="text-[1.1rem] leading-relaxed text-foreground/90">{phase.text}</p>
-                            )}
-                            {phase.list && (
-                              <ul className="space-y-3.5">
-                                {phase.list.map((item, j) => (
-                                  <li key={j} className="flex gap-4 items-start">
-                                    <div className="w-2.5 h-2.5 rounded-full bg-primary/60 mt-2.5 shrink-0" />
-                                    <span className="text-[1.1rem] leading-relaxed font-medium">{item}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
+                return <TimelinePhases key={index} phases={section.phases} />;
               case 'accordion':
                 return <Accordion key={index} items={section.items} />;
               case 'next-link':

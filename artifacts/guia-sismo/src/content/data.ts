@@ -145,12 +145,12 @@ export const guidesData: Record<string, GuideData> = {
         type: "accordion",
         items: [
           {
-            title: "Información: ¿sabías que…?",
+            title: "Información",
             icon: "Info",
             content: [
-              "El sismo más fuerte de 2026 hasta ahora fue de magnitud 7.5, registrado cerca de Tonga, en el océano Pacífico (marzo de 2026).",
-              "En junio de 2026, Venezuela vivió dos sismos seguidos de magnitud 7.5 y 7.2, los más fuertes en más de un siglo en ese país.",
-              "Cada año ocurren miles de sismos en el mundo. La mayoría son pequeños y no causan daños."
+              "En 2026 se han registrado sismos importantes en distintas partes del mundo, como uno de magnitud 7.5 cerca de Tonga (marzo) y dos en Venezuela de 7.5 y 7.2 (junio).",
+              "Cada año ocurren miles de sismos en el mundo. La mayoría son pequeños y pasan sin causar daños.",
+              "Esto es un fenómeno natural del planeta: le ocurre a muchas personas y comunidades, no solo a ti."
             ]
           },
           {
