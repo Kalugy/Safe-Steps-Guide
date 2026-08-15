@@ -24,7 +24,7 @@ export type SectionData =
   | { type: 'quotes'; list: string[] }
   | { type: 'grounding'; title: string; text: string; list: { count: string; text: string }[] }
   | { type: 'categories'; items: { icon: string; title: string; text: string }[] }
-  | { type: 'timeline'; phases: { period: string; icon: string; title: string; text?: string; list?: string[] }[] }
+  | { type: 'timeline'; phases: { period?: string; icon: string; title: string; text?: string; list?: string[] }[] }
   | { type: 'next-link'; path: string; label: string };
 
 export interface GuideData {
@@ -88,7 +88,7 @@ export const guidesData: Record<string, GuideData> = {
     sections: [
       {
         type: "text",
-        text: "Cuando pasan las primeras horas, es normal preguntarse qué sigue. No tienes que hacerlo todo a la vez: cada etapa tiene su momento."
+        text: "Cuando pasan las primeras horas, es normal preguntarse qué sigue. No hay un calendario exacto: cada persona y cada situación avanza a su propio ritmo. Estos son consejos generales, paso a paso."
       },
       {
         type: "step",
@@ -99,7 +99,6 @@ export const guidesData: Record<string, GuideData> = {
         type: "timeline",
         phases: [
           {
-            period: "Días 2–3",
             icon: "Users",
             title: "Encontrar y estabilizar",
             list: [
@@ -110,7 +109,6 @@ export const guidesData: Record<string, GuideData> = {
             ]
           },
           {
-            period: "Días 4–7",
             icon: "Home",
             title: "Evaluar daños y conseguir ayuda",
             list: [
@@ -121,7 +119,6 @@ export const guidesData: Record<string, GuideData> = {
             ]
           },
           {
-            period: "Semana 2+",
             icon: "Hammer",
             title: "Recuperar y reconstruir",
             list: [
@@ -132,7 +129,6 @@ export const guidesData: Record<string, GuideData> = {
             ]
           },
           {
-            period: "Meses siguientes",
             icon: "Sprout",
             title: "Reconstruir mejor y prepararse para el próximo desastre",
             list: [

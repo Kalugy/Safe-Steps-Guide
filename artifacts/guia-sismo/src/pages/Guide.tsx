@@ -159,7 +159,9 @@ export function Guide() {
                               <Icon size={24} strokeWidth={2.25} />
                             </div>
                             <div>
-                              <p className="text-[0.95rem] font-bold text-primary uppercase tracking-wide">{phase.period}</p>
+                              {phase.period && (
+                                <p className="text-[0.95rem] font-bold text-primary uppercase tracking-wide">{phase.period}</p>
+                              )}
                               <h3 className="text-[1.25rem] font-bold text-foreground leading-snug">{phase.title}</h3>
                             </div>
                           </div>
