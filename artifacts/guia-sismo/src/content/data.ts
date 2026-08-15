@@ -76,11 +76,6 @@ export const guidesData: Record<string, GuideData> = {
         type: "message",
         emphasis: "No necesitas solucionar todo hoy. Concéntrate en el siguiente paso."
       },
-      {
-        type: "next-link",
-        path: "/guia/pasos-siguientes",
-        label: "Pasos siguientes"
-      }
     ]
   },
   "pasos-siguientes": {
