@@ -129,7 +129,7 @@ export const guidesData: Record<string, GuideData> = {
                   "Confirma que tú y los tuyos estén a salvo y juntos en lo posible.",
                   "Mantén la calma: si sientes una réplica, respira hondo y aléjate de estructuras dañadas.",
                   "Asegura lo básico: agua, alimento, abrigo y un lugar seguro donde descansar.",
-                  "Mantente informado solo por canales oficiales."
+                  "Mantente comunicado con las personas a tu alrededor y con tus redes de apoyo."
                 ]
               }
             ]
