@@ -24,6 +24,16 @@ import {
   Route,
   Info,
   Globe,
+  MapPin,
+  Shield,
+  Backpack,
+  FolderOpen,
+  Clock,
+  Car,
+  Bed,
+  Building2,
+  CloudRain,
+  Mountain,
   ChevronDown
 } from 'lucide-react';
 
@@ -53,5 +63,15 @@ export const Icons = {
   Route,
   Info,
   Globe,
+  MapPin,
+  Shield,
+  Backpack,
+  FolderOpen,
+  Clock,
+  Car,
+  Bed,
+  Building2,
+  CloudRain,
+  Mountain,
   ChevronDown
 };

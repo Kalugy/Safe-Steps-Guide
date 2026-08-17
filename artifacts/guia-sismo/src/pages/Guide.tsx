@@ -1,7 +1,8 @@
 import { useRoute, Link, useLocation } from 'wouter';
-import { guidesData, homeContent } from '../content/data';
+import { guidesData, beforeGuidesData, duringGuidesData, homeContent, beforeContent, duringContent } from '../content/data';
 import { Icons } from '../components/icons';
 import { Disclaimer } from '../components/Disclaimer';
+import { ShareCard } from '../components/ShareGuide';
 import { useEffect, useState } from 'react';
 
 type ModuleData = {
@@ -29,7 +30,7 @@ function ModuleWizard({
   // List view: same card style as the home screen
   if (current === null) {
     return (
-      <div className="my-10 flex flex-col gap-3.5">
+      <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-3.5">
         {modules.map((mod, i) => {
           const Icon = Icons[mod.icon as keyof typeof Icons];
           return (
@@ -37,7 +38,7 @@ function ModuleWizard({
               key={i}
               type="button"
               onClick={() => goTo(i)}
-              className="w-full text-left group bg-card hover:bg-secondary/40 active:scale-[0.98] transition-all duration-300 p-5 rounded-[1.25rem] border border-border shadow-sm flex items-center gap-5"
+              className="w-full h-full text-left group bg-card hover:bg-secondary/40 hover:shadow-md hover:border-primary/20 active:scale-[0.98] md:active:scale-100 transition-all duration-300 p-5 rounded-[1.25rem] border border-border shadow-sm flex items-center gap-5"
             >
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 group-hover:scale-105 transition-transform duration-300">
                 {Icon && <Icon size={28} strokeWidth={2.25} />}
@@ -120,9 +121,16 @@ function ModuleWizard({
 }
 
 export function Guide() {
-  const [match, params] = useRoute('/guia/:id');
-  const id = params?.id;
-  const guide = id ? guidesData[id] : null;
+  const [matchAfter, afterParams] = useRoute('/guia/:id');
+  const [matchBefore, beforeParams] = useRoute('/antes/:id');
+  const [matchDuring, duringParams] = useRoute('/durante/:id');
+  const hub = matchBefore ? 'before' : matchDuring ? 'during' : 'after';
+  const id = (hub === 'before' ? beforeParams : hub === 'during' ? duringParams : afterParams)?.id;
+  const guides = hub === 'before' ? beforeGuidesData : hub === 'during' ? duringGuidesData : guidesData;
+  const hubContent = hub === 'before' ? beforeContent : hub === 'during' ? duringContent : homeContent;
+  const homePath = hub === 'before' ? '/antes' : hub === 'during' ? '/' : '/despues';
+  const backLabel = hub === 'before' ? 'Volver a antes' : hub === 'during' ? 'Volver a durante' : 'Volver a después';
+  const guide = id ? guides[id] : null;
   const [, setLocation] = useLocation();
   const [moduleOpen, setModuleOpen] = useState(false);
 
@@ -131,14 +139,14 @@ export function Guide() {
   }, [id]);
 
   useEffect(() => {
-    if (match && !guide) {
-      setLocation('/');
+    if ((matchAfter || matchBefore || matchDuring) && !guide) {
+      setLocation(homePath);
     }
-  }, [match, guide, setLocation]);
+  }, [matchAfter, matchBefore, matchDuring, guide, setLocation, homePath]);
 
   if (!guide) return null;
 
-  const routes = homeContent.routes;
+  const routes = [...hubContent.routes, ...('later' in hubContent && hubContent.later ? hubContent.later.routes : [])];
   const currentIndex = routes.findIndex((r) => r.id === id);
   const prevRoute = currentIndex > 0 ? routes[currentIndex - 1] : null;
   const nextRoute = currentIndex >= 0 && currentIndex < routes.length - 1 ? routes[currentIndex + 1] : null;
@@ -146,16 +154,18 @@ export function Guide() {
   return (
     <div className="flex flex-col min-h-full bg-background">
       {/* Sticky Header */}
-      <div className="sticky top-0 z-10 bg-background/85 backdrop-blur-xl border-b border-border/50 px-4 py-4 animate-gentle opacity-0">
-        <Link href="/" className="inline-flex items-center gap-2 text-primary font-semibold hover:opacity-80 transition-opacity p-2 -ml-2 rounded-xl active:bg-secondary">
-          <Icons.ArrowLeft size={22} strokeWidth={2.5} />
-          <span className="text-[1.1rem]">Volver al inicio</span>
-        </Link>
+      <div className="sticky top-[2.15rem] z-10 bg-background/85 backdrop-blur-xl border-b border-border/50 animate-gentle opacity-0">
+        <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-4">
+          <Link href={homePath} className="inline-flex items-center gap-2 text-primary font-semibold hover:opacity-80 transition-opacity p-2 -ml-2 rounded-xl hover:bg-secondary active:bg-secondary">
+            <Icons.ArrowLeft size={22} strokeWidth={2.5} />
+            <span className="text-[1.1rem]">{backLabel}</span>
+          </Link>
+        </div>
       </div>
 
-      <div className="px-6 py-10 flex-1">
+      <div className="w-full max-w-3xl mx-auto px-6 md:px-8 py-10 flex-1">
         {!moduleOpen && (
-          <h1 className="text-[2.2rem] font-bold tracking-tight text-foreground mb-10 animate-gentle opacity-0 delay-100 leading-tight">
+          <h1 className="text-[2.2rem] md:text-4xl font-bold tracking-tight text-foreground mb-10 animate-gentle opacity-0 delay-100 leading-tight">
             {guide.title}
           </h1>
         )}
@@ -219,7 +229,7 @@ export function Guide() {
                 );
               case 'grid-list':
                 return (
-                  <div key={index} className="grid grid-cols-2 gap-3.5 my-8">
+                  <div key={index} className="grid grid-cols-2 md:grid-cols-3 gap-3.5 my-8">
                     {section.list.map((item, i) => (
                       <div key={i} className="bg-white p-5 rounded-2xl border border-border shadow-sm text-center flex items-center justify-center">
                         <span className="text-[1.05rem] font-semibold leading-tight">{item}</span>
@@ -246,7 +256,7 @@ export function Guide() {
                 );
               case 'quotes':
                 return (
-                  <div key={index} className="space-y-4 my-10">
+                  <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-4 my-10">
                     {section.list.map((quote, i) => (
                       <div key={i} className="bg-white p-8 rounded-[1.5rem] shadow-sm border border-border text-center">
                         <p className="text-[1.35rem] text-foreground font-semibold leading-relaxed">
@@ -258,7 +268,7 @@ export function Guide() {
                 );
               case 'categories':
                 return (
-                  <div key={index} className="grid grid-cols-1 gap-4 my-10">
+                  <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-4 my-10">
                     {section.items.map((item, i) => {
                       const Icon = Icons[item.icon as keyof typeof Icons];
                       return (
@@ -280,7 +290,7 @@ export function Guide() {
               case 'next-link':
                 return (
                   <Link key={index} href={section.path} className="block group my-10">
-                    <div className="bg-primary text-primary-foreground active:scale-[0.98] transition-all duration-300 p-6 rounded-[1.25rem] shadow-sm flex items-center justify-between gap-5">
+                    <div className="bg-primary text-primary-foreground hover:opacity-95 active:scale-[0.98] md:active:scale-100 transition-all duration-300 p-6 rounded-[1.25rem] shadow-sm flex items-center justify-between gap-5">
                       <span className="text-[1.2rem] font-bold">{section.label}</span>
                       <Icons.ArrowRight size={26} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
@@ -293,21 +303,10 @@ export function Guide() {
         </div>
 
         {/* Prev / Next navigation */}
-        <div className={moduleOpen ? 'hidden' : 'mt-12 pt-8 border-t border-border/60 flex flex-col gap-4'}>
-          {nextRoute && (
-            <Link href={nextRoute.path} className="block group">
-              <div className="bg-primary text-primary-foreground active:scale-[0.98] transition-all duration-300 p-6 rounded-[1.25rem] shadow-sm flex items-center justify-between gap-5">
-                <div className="text-left">
-                  <p className="text-[0.9rem] font-semibold uppercase tracking-wide opacity-80">Siguiente</p>
-                  <p className="text-[1.15rem] font-bold leading-snug">{nextRoute.title}</p>
-                </div>
-                <Icons.ArrowRight size={26} strokeWidth={2.5} className="shrink-0 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </Link>
-          )}
+        <div className={moduleOpen ? 'hidden' : 'mt-12 pt-8 border-t border-border/60 grid grid-cols-1 md:grid-cols-2 gap-4'}>
           {prevRoute && (
-            <Link href={prevRoute.path} className="block group">
-              <div className="bg-white border border-border active:scale-[0.98] transition-all duration-300 p-6 rounded-[1.25rem] shadow-sm flex items-center gap-5">
+            <Link href={prevRoute.path} className="block group order-2 md:order-1">
+              <div className="bg-white border border-border hover:shadow-md hover:border-primary/20 active:scale-[0.98] md:active:scale-100 transition-all duration-300 p-6 rounded-[1.25rem] shadow-sm flex items-center gap-5 h-full">
                 <Icons.ArrowLeft size={26} strokeWidth={2.5} className="shrink-0 text-primary group-hover:-translate-x-1 transition-transform duration-300" />
                 <div className="text-left">
                   <p className="text-[0.9rem] font-semibold uppercase tracking-wide text-muted-foreground">Anterior</p>
@@ -316,7 +315,24 @@ export function Guide() {
               </div>
             </Link>
           )}
+          {nextRoute && (
+            <Link href={nextRoute.path} className={`block group ${prevRoute ? 'order-1 md:order-2' : 'md:col-start-2'}`}>
+              <div className="bg-primary text-primary-foreground hover:opacity-95 active:scale-[0.98] md:active:scale-100 transition-all duration-300 p-6 rounded-[1.25rem] shadow-sm flex items-center justify-between gap-5 h-full">
+                <div className="text-left">
+                  <p className="text-[0.9rem] font-semibold uppercase tracking-wide opacity-80">Siguiente</p>
+                  <p className="text-[1.15rem] font-bold leading-snug">{nextRoute.title}</p>
+                </div>
+                <Icons.ArrowRight size={26} strokeWidth={2.5} className="shrink-0 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </Link>
+          )}
         </div>
+
+        {!moduleOpen && (
+          <div className="mt-10">
+            <ShareCard />
+          </div>
+        )}
       </div>
 
       <div className="animate-gentle opacity-0 delay-300">
