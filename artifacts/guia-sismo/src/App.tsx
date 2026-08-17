@@ -1,6 +1,9 @@
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 import { Home } from './pages/Home';
+import { Before } from './pages/Before';
+import { After } from './pages/After';
 import { Guide } from './pages/Guide';
+import { PhaseNav } from './components/PhaseNav';
 import { useEffect } from 'react';
 
 // Scroll to top on route change
@@ -16,13 +19,16 @@ export default function App() {
   return (
     <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <ScrollToTop />
-      {/* Background color of the body context (desktop view outer container) */}
-      <div className="min-h-[100dvh] bg-[#EBE7DF] w-full flex justify-center font-sans">
-        {/* Mobile-first constraints: fixed max-width, shadows for desktop edges */}
-        <div className="w-full max-w-[480px] bg-background min-h-[100dvh] flex flex-col relative shadow-2xl shadow-black/5 overflow-x-hidden">
+      <div className="min-h-[100dvh] bg-background w-full font-sans">
+        <div className="w-full min-h-[100dvh] flex flex-col relative overflow-x-hidden">
+          <PhaseNav />
           <Switch>
             <Route path="/" component={Home} />
+            <Route path="/antes" component={Before} />
+            <Route path="/despues" component={After} />
             <Route path="/guia/:id" component={Guide} />
+            <Route path="/antes/:id" component={Guide} />
+            <Route path="/durante/:id" component={Guide} />
             <Route component={Home} />
           </Switch>
         </div>
