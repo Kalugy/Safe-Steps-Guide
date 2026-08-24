@@ -14,7 +14,8 @@ Este archivo explica cómo correr el proyecto **fuera de Replit**, cómo está o
 
 No es una red social ni una app con cuentas. Es una guía estática:
 
-- **Durante** (`/`): qué hacer mientras tiembla.
+- **Mapa** (`/`): entrada por defecto; capas e historial. Botón **Guías** abre la guía de sismos.
+- **Durante** (`/durante`): qué hacer mientras tiembla (inicio de la guía).
 - **Después** (`/despues`): ayuda inmediata y pasos por días.
 - **Antes** (`/antes`): preparación, por qué prepararte y riesgo según la región.
 
@@ -140,7 +141,9 @@ Rutas de la app:
 
 | URL | Qué muestra |
 | --- | --- |
-| `/` | Durante el sismo |
+| `/` | Mapa (inicio) |
+| `/map` | Alias del mapa |
+| `/durante` | Guía de sismos — Durante |
 | `/durante/:id` | Guías de durante |
 | `/despues` | Después del sismo |
 | `/guia/:id` | Guías de después |

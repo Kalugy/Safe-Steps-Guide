@@ -128,7 +128,7 @@ export function Guide() {
   const id = (hub === 'before' ? beforeParams : hub === 'during' ? duringParams : afterParams)?.id;
   const guides = hub === 'before' ? beforeGuidesData : hub === 'during' ? duringGuidesData : guidesData;
   const hubContent = hub === 'before' ? beforeContent : hub === 'during' ? duringContent : homeContent;
-  const homePath = hub === 'before' ? '/antes' : hub === 'during' ? '/' : '/despues';
+  const homePath = hub === 'before' ? '/antes' : hub === 'during' ? '/durante' : '/despues';
   const backLabel = hub === 'before' ? 'Volver a antes' : hub === 'during' ? 'Volver a durante' : 'Volver a después';
   const guide = id ? guides[id] : null;
   const [, setLocation] = useLocation();

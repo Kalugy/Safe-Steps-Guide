@@ -49,7 +49,78 @@ export const beforeContent = {
 
 export const duringContent = {
   title: "Está temblando.",
-  subtitle: "No corras. Agáchate, cúbrete y agárrate.",
+  subtitle: "No hay una sola regla. Depende de dónde estás y de lo que sientas.",
+  notice: {
+    title: "No es un camino fácil ni único",
+    body: "Nadie puede predecir la magnitud en el momento. A veces conviene quedarse quieto y cubrirse. Otras veces, cuando el movimiento para o hay un peligro claro, hay que salir a un lugar más seguro. Mira ejemplos reales y elige según tu situación.",
+    points: [
+      "No existe una respuesta mágica que sirva en todos los sismos.",
+      "El mismo temblor se vive distinto en casa, en la calle, en un edificio o en un carro.",
+      "Ver cómo actuaron otras personas ayuda a decidir con más calma.",
+    ],
+  },
+  videos: {
+    heading: "Cómo actuaron otras personas",
+    text: "Primero compara reacciones reales (calma vs correr). Luego mira guías claras de qué hacer. No son una orden: son ejemplos para decidir según tu situación.",
+    items: [
+      {
+        id: 'calma-sentado',
+        youtubeId: 'tOZU2qsbkUU',
+        tag: 'Calma',
+        title: 'Se queda sentado y en calma',
+        caption: 'Una persona permanece en su lugar mientras tiembla. Compara esta reacción con la del siguiente video.',
+      },
+      {
+        id: 'corre-panico',
+        youtubeId: 'nHunAbUXNwM',
+        tag: 'Correr',
+        title: 'Gente que sale corriendo',
+        caption: 'Otra reacción: pánico y correr. Sirve para ver la diferencia — no siempre es la opción más segura mientras tiembla.',
+      },
+      {
+        id: 'quedarse',
+        youtubeId: 'GSDmqLQmMN0',
+        tag: 'Guía',
+        title: 'Agáchate, cúbrete y agárrate',
+        caption: 'Ejemplo oficial (ShakeOut): cómo protegerte bajo una mesa cuando puedes quedarte donde estás.',
+      },
+      {
+        id: 'sin-mesa',
+        youtubeId: 'HxMCoE0CIcA',
+        tag: 'Guía',
+        title: 'Si no hay mesa cerca',
+        caption: 'Guía oficial: cómo proteger cabeza y cuello cuando no hay un escritorio o mesa resistente.',
+      },
+      {
+        id: 'japon-calma',
+        youtubeId: 'RSKr55qNn6Q',
+        tag: 'Calma',
+        title: 'En Japón: no correr de inmediato',
+        caption: 'Entrenamiento escolar: primero se protegen y se quedan bajos; no salen corriendo mientras tiembla.',
+      },
+      {
+        id: 'vehiculo',
+        youtubeId: 'bxLhFTe7_M0',
+        tag: 'Vehículo',
+        title: 'Si vas manejando',
+        caption: 'Otra ruta: detenerse en un lugar despejado y quedarse dentro hasta que pare.',
+      },
+      {
+        id: 'colombia-pereira-parque',
+        youtubeId: 'A0fcKKWyN_c',
+        tag: 'Colombia',
+        title: 'Pereira: en el parque principal',
+        caption: 'Así se vivió el sismo en la plaza de Pereira: la gente sale al espacio abierto cuando el movimiento sorprende.',
+      },
+      {
+        id: 'colombia-pereira',
+        youtubeId: 'k8z9H0XkSUc',
+        tag: 'Colombia',
+        title: 'Así se vivió en Pereira',
+        caption: 'Otra toma del mismo sismo en Colombia: distintas personas, distintos lugares, distintas reacciones.',
+      },
+    ],
+  },
   routes: [
     { id: 'cubrete', title: 'Agáchate, cúbrete y agárrate', icon: 'Shield', path: '/durante/cubrete' },
     { id: 'casa', title: 'Estoy en casa', icon: 'Home', path: '/durante/casa' },
@@ -1016,11 +1087,11 @@ export const duringGuidesData: Record<string, GuideData> = {
     sections: [
       {
         type: "text",
-        text: "Durante el movimiento, lo más seguro suele ser protegerte donde estás. Salir corriendo aumenta el riesgo de caerte o de que te caiga algo."
+        text: "Esta es la recomendación más común cuando estás adentro y puedes cubrirte. No es la única opción del mundo: si estás en la calle, en un carro o hay un peligro inmediato (gas, fuego, colapso visible), la decisión cambia. Nadie sabe en el primer segundo qué tan fuerte será el sismo."
       },
       {
         type: "step",
-        title: "Haz esto ahora",
+        title: "Si puedes quedarte y cubrirte",
         list: [
           "Agáchate para no caerte.",
           "Cúbrete bajo una mesa o escritorio resistente. Si no hay, júntate a una columna o muro interior y cubre cabeza y cuello con brazos o una almohada.",
@@ -1030,11 +1101,11 @@ export const duringGuidesData: Record<string, GuideData> = {
       },
       {
         type: "warning",
-        text: "No uses el ascensor. No te pares en el marco de la puerta salvo que sea un elemento estructural sólido. No corras hacia la calle mientras tiembla."
+        text: "Salir corriendo mientras tiembla suele ser peligroso: te puedes caer o te puede caer algo. No uses el ascensor. Evacúa con calma cuando el movimiento haya parado, o antes solo si hay un peligro claro e inmediato."
       },
       {
         type: "message",
-        emphasis: "Quédate cubierto hasta que pare. Luego respira y mira si puedes salir con calma."
+        emphasis: "Primero protégelo. Luego decide si salir es más seguro. No tienes que adivinar la magnitud: responde a lo que ves y sientes."
       }
     ]
   },

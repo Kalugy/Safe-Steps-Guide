@@ -1,5 +1,6 @@
 import { Icons } from '../components/icons';
 import { Disclaimer } from '../components/Disclaimer';
+import { VideoReels } from '../components/VideoReels';
 import { Link } from 'wouter';
 
 type HubRoute = {
@@ -10,9 +11,27 @@ type HubRoute = {
   period?: string;
 };
 
+type VideoItem = {
+  id: string;
+  youtubeId: string;
+  tag: string;
+  title: string;
+  caption: string;
+};
+
 type HubContent = {
   title: string;
   subtitle: string;
+  notice?: {
+    title: string;
+    body: string;
+    points: string[];
+  };
+  videos?: {
+    heading: string;
+    text: string;
+    items: VideoItem[];
+  };
   routes: HubRoute[];
   later?: {
     heading: string;
@@ -60,9 +79,43 @@ export function HubPage({ content }: { content: HubContent }) {
         <p className="text-[1.35rem] md:text-2xl text-foreground/80 leading-relaxed font-medium max-w-2xl">
           {content.subtitle}
         </p>
+
+        {content.notice && (
+          <div className="mt-8 max-w-3xl bg-primary/10 border border-primary/10 rounded-[1.5rem] p-6 md:p-7">
+            <h2 className="text-[1.25rem] md:text-xl font-bold text-foreground mb-3">
+              {content.notice.title}
+            </h2>
+            <p className="text-[1.05rem] leading-relaxed text-foreground/80 mb-4">
+              {content.notice.body}
+            </p>
+            <ul className="space-y-2.5">
+              {content.notice.points.map((point) => (
+                <li key={point} className="flex gap-3 items-start">
+                  <span className="w-2 h-2 rounded-full bg-primary/70 mt-2 shrink-0" />
+                  <span className="text-[1rem] leading-relaxed text-foreground/80 font-medium">
+                    {point}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div className="w-full max-w-6xl mx-auto px-4 md:px-8 pb-8 flex-1 animate-gentle opacity-0 delay-100">
+        {content.videos && (
+          <VideoReels
+            heading={content.videos.heading}
+            text={content.videos.text}
+            items={content.videos.items}
+          />
+        )}
+
+        {(content.videos || content.notice) && (
+          <h2 className="text-[1.35rem] md:text-2xl font-bold tracking-tight text-foreground mb-4 px-2">
+            Elige según dónde estás
+          </h2>
+        )}
         <RouteGrid routes={content.routes} />
 
         {content.later && (
