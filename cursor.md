@@ -107,7 +107,7 @@ pnpm --filter @workspace/guia-sismo run serve
 
 En Windows, define las mismas variables `$env:PORT` y `$env:BASE_PATH` antes de `build` y `serve`.
 
-La salida queda en `artifacts/guia-sismo/dist/public`.
+La salida queda en `artifacts/guia-sismo/dist`.
 
 ### Windows y binarios nativos
 

@@ -17,7 +17,7 @@ run = "pnpm --filter @workspace/guia-sismo run dev"
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/guia-sismo", "run", "build" ]
 serve = "static"
-publicDir = "artifacts/guia-sismo/dist/public"
+publicDir = "artifacts/guia-sismo/dist"
 
 [[services.production.rewrites]]
 from = "/*"
